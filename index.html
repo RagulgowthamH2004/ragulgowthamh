@@ -247,6 +247,97 @@ footer{padding:48px 0 40px;border-top:1px solid var(--line)}
 .rise{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
 .rise.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rise{opacity:1;transform:none}}
+/* ============================================================
+   TOPIC SECTIONS — OEKO-TEX® and Digital Product Passport
+   Additive only. Reuses the existing token set; no overrides.
+   ============================================================ */
+#oeko-tex,#dpp{scroll-margin-top:78px}
+.topic-lede{font-family:"Newsreader",Georgia,serif;font-size:18.5px;line-height:1.62;color:var(--ink-2);max-width:68ch;margin:0 0 34px}
+.topic-lede strong{color:var(--ink);font-weight:600}
+
+/* two headline cards (OEKO-TEX standards) */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+@media(max-width:760px){.pillars{grid-template-columns:1fr}}
+.pillar{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s,border-color .3s}
+.pillar::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
+.pillar:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.pillar:hover::before{transform:scaleX(1)}
+.pillar .stamp{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);border:1px solid color-mix(in srgb,var(--amber) 45%,transparent);border-radius:100px;padding:5px 11px;margin-bottom:16px}
+.pillar h3{margin:0 0 10px;font-family:"Fraunces",serif;font-variation-settings:"SOFT" 28;font-size:22px;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.pillar p{margin:0;font-size:14.5px;line-height:1.6;color:var(--fog)}
+
+/* textile imagery */
+.topic-band{position:relative;margin:0 0 34px;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/6}
+@media(max-width:700px){.topic-band{aspect-ratio:16/9}}
+.topic-band img{width:100%;height:100%;object-fit:cover}
+.topic-band figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;color:#fff;font-size:14px;line-height:1.5;background:linear-gradient(to top,rgba(6,18,22,.88),rgba(6,18,22,.35) 55%,transparent)}
+.topic-band figcaption span{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E6C489;margin-bottom:5px}
+.topic-band figcaption b{font-weight:600}
+.pillar{padding-top:0}
+.pillar-media{margin:0 -26px 20px;height:172px;overflow:hidden;position:relative}
+.pillar-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.3,1)}
+.pillar:hover .pillar-media img{transform:scale(1.05)}
+.pillar-media::after{content:"";position:absolute;inset:auto 0 0 0;height:52px;background:linear-gradient(to top,var(--card),transparent)}
+@media(max-width:760px){.pillar-media{height:150px}}
+
+/* focus / key-area cards */
+.focus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:14px}
+.focus{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s,border-color .3s}
+.focus:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:var(--shadow)}
+.focus .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 13%,transparent);color:var(--teal);margin-bottom:13px}
+.focus .ic svg{width:19px;height:19px}
+.focus h4{margin:0 0 6px;font-size:15px;font-weight:600;line-height:1.3}
+.focus p{margin:0;font-size:13.5px;color:var(--fog);line-height:1.55}
+.subhead{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);margin:34px 0 16px}
+
+/* scope note */
+.note{display:flex;gap:13px;align-items:flex-start;margin-top:26px;padding:16px 18px;border-left:3px solid var(--amber);background:var(--paper-2);border-radius:0 10px 10px 0;font-size:14px;color:var(--ink-2);line-height:1.6}
+.note svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--amber)}
+
+/* DPP — digital identity treatment */
+.dpp-panel{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,3.4vw,30px);margin-bottom:18px;
+  background-image:radial-gradient(color-mix(in srgb,var(--teal) 22%,transparent) 1px,transparent 1px);background-size:22px 22px}
+.flow{display:flex;align-items:center;gap:8px;list-style:none;margin:0;padding:4px 0 12px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.flow::-webkit-scrollbar{height:7px}
+.flow::-webkit-scrollbar-track{background:var(--line);border-radius:100px}
+.flow::-webkit-scrollbar-thumb{background:var(--teal);border-radius:100px}
+.flow li{flex:0 0 auto;display:flex;align-items:center;gap:8px}
+.flow .step{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px dashed color-mix(in srgb,var(--teal) 45%,var(--line));border-radius:10px;padding:11px 15px;transition:border-color .25s,transform .25s,background .25s;white-space:nowrap}
+.flow li:hover .step{border-style:solid;border-color:var(--teal);transform:translateY(-2px)}
+.flow .step i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--fog)}
+.flow .step b{font-size:14px;font-weight:600;letter-spacing:-.005em}
+.flow li:last-child .step{background:var(--teal);border-style:solid;border-color:var(--teal);color:#F4F7F6}
+[data-theme="dark"] .flow li:last-child .step{color:#081316}
+.flow li:last-child .step i{color:inherit;opacity:.72}
+.flow .arw{color:var(--fog);flex:none}
+.flow .arw svg{width:15px;height:15px;display:block}
+.flow-cap{font-size:12.5px;color:var(--fog);margin:6px 0 0}
+
+/* current-page marker + linkable comparison cards */
+nav.main a[aria-current="page"]{color:var(--teal);background:color-mix(in srgb,var(--teal) 13%,transparent)}
+.compare>a{text-decoration:none;display:block;transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s,border-color .3s}
+.compare>a:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:var(--teal)}
+.compare>a .go{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--teal)}
+.compare>a .go svg{width:15px;height:15px;transition:transform .3s}
+.compare>a:hover .go svg{transform:translateX(4px)}
+
+/* expertise page header block */
+.page-head{padding-top:clamp(30px,5vw,58px)}
+.page-head h1{margin:8px 0 0;font-size:clamp(38px,6.5vw,74px)}
+.page-head .lede{font-family:"Newsreader",Georgia,serif;font-size:clamp(17px,2.1vw,20px);line-height:1.6;color:var(--ink-2);max-width:62ch;margin:20px 0 0}
+.jump{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--fog);text-decoration:none;transition:color .2s}
+.back:hover{color:var(--teal)}
+.back svg{width:15px;height:15px}
+
+/* comparison */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:700px){.compare{grid-template-columns:1fr}}
+.compare>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.compare .who{font-family:"Fraunces",serif;font-variation-settings:"SOFT" 30;font-size:19px;font-weight:600;margin:0 0 4px}
+.compare .what{font-size:14px;font-weight:600;color:var(--teal);margin:0 0 10px}
+.compare .otx .what{color:var(--amber)}
+.compare p.d{margin:0;font-size:13.5px;color:var(--fog);line-height:1.55}
 </style>
 </head>
 
@@ -258,6 +349,7 @@ footer{padding:48px 0 40px;border-top:1px solid var(--line)}
     <nav class="main">
       <a href="#writing">Writing</a>
       <a href="#about" class="hide-sm">About</a>
+      <a href="expertise.html">Expertise</a>
       <a href="#field" class="hide-sm">Field</a>
       <a href="#contact" class="hide-sm">Contact</a>
       <button class="toggle" id="themeBtn" aria-label="Switch to dark mode" title="Switch theme">
@@ -378,6 +470,33 @@ footer{padding:48px 0 40px;border-top:1px solid var(--line)}
     </div>
   </section>
 
+  <!-- ══════════ EXPERTISE AREAS (teaser → expertise.html) ══════════ -->
+  <section id="expertise" class="wrap" aria-labelledby="expertise-h">
+    <div class="sec-head rise">
+      <div>
+        <div class="eyebrow">Beyond the research</div>
+        <h2 class="display" id="expertise-h">Expertise areas</h2>
+        <p>Two subjects I follow closely alongside the environmental and compliance work. They are related but distinct, and each has its own page section.</p>
+      </div>
+      <a class="btn btn-quiet" href="expertise.html">Open expertise areas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="compare rise">
+      <a href="expertise.html#oeko-tex" class="otx">
+        <p class="who">OEKO-TEX®</p>
+        <p class="what">Product safety &amp; certification</p>
+        <p class="d">Textile testing, chemical compliance and sustainable manufacturing — STANDARD 100, MADE IN GREEN, restricted substances and supply-chain transparency.</p>
+        <span class="go">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="expertise.html#dpp">
+        <p class="who">Digital Product Passport</p>
+        <p class="what">Digital product information &amp; traceability</p>
+        <p class="d">Traceability and circularity for textiles — product identity, material data, lifecycle information and the developing EU requirements.</p>
+        <span class="go">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
   <!-- ══════════ FIELD ══════════ -->
   <section id="field" class="field">
     <div class="wrap">
@@ -457,7 +576,7 @@ footer{padding:48px 0 40px;border-top:1px solid var(--line)}
 <footer class="wrap">
   <div class="foot">
     <div>© <span id="yr"></span> Ragul Gowtham H · Coimbatore, India</div>
-    <nav><a href="#writing">Writing</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <nav><a href="#writing">Writing</a><a href="expertise.html">Expertise</a><a href="#contact">Contact</a></nav>
     <a class="top" href="#top">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
       Back to top</a>
