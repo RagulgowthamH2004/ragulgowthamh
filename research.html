@@ -353,6 +353,17 @@ nav.main a[aria-current="page"]{color:var(--teal);background:color-mix(in srgb,v
 .pager .t{font-family:"Fraunces",serif;font-variation-settings:"SOFT" 30;font-size:15.5px;font-weight:600;line-height:1.32}
 .pager a.nxt{text-align:right}
 
+/* motion backgrounds — looping, muted, decorative */
+.hero-frame,.art-hero{position:relative}
+.art-hero{overflow:hidden}
+.bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity 1.4s ease;pointer-events:none}
+.bgv.ready{opacity:1}
+.hero-frame::after{z-index:2}
+.hero-frame .hero-tag{z-index:3}
+.art-hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,18,22,.04) 0%,rgba(6,18,22,.24) 100%)}
+@media (prefers-reduced-motion:reduce){.bgv{display:none}}
+
 /* ESG case-study components */
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 0}
 .tags span{font-size:11.5px;font-weight:600;letter-spacing:.03em;padding:6px 12px;border-radius:100px;border:1px solid var(--line);background:var(--card);color:var(--ink-2)}
@@ -484,6 +495,8 @@ nav.main a[aria-current="page"]{color:var(--teal);background:color-mix(in srgb,v
       environmental standards and renewable energy. The published work runs along one thread — how water
       demand, rainfall variability and ocean forcing behave at district scale in Tamil Nadu — with a
       controlled-environment experiment sitting slightly to one side of it.</p>
+    <div class="art-hero rise"><video class="bgv" src="bg-research.mp4" poster="poster-research.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video></div>
+
     <div class="jump">
       <a class="btn btn-quiet" href="#published">Published work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn-quiet" href="#applied">Case studies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -648,6 +661,19 @@ const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.t
 document.querySelectorAll('.rise').forEach(el=>io.observe(el));
 const mast=document.getElementById('masthead');
 addEventListener('scroll',()=>mast.classList.toggle('stuck',scrollY>12),{passive:true});
+/* looping motion backgrounds: fade in when ready, pause when off-screen */
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('video.bgv').forEach(function(v){
+    if(reduce){ v.remove(); return; }
+    if(v.readyState>2){ v.classList.add('ready'); }
+    else { v.addEventListener('loadeddata', function(){ v.classList.add('ready'); }, {once:true}); }
+    var vo = new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } else { v.pause(); }
+    }); }, {threshold:.05});
+    vo.observe(v);
+  });
+})();
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
